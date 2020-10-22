@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.map
 import org.koin.android.ext.android.get
 import pl.burno.selectionlauncher.domain.Action
 import pl.burno.selectionlauncher.ActionToggler
+import pl.burno.selectionlauncher.screen.components.Main
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val uiActionsFlow = actionToggler.state.toUiActionsFlow()
         setContent {
-            Home(uiActionsFlow = uiActionsFlow, onUiActionChanged = ::mapAndToggle)
+            Main(uiActionsFlow = uiActionsFlow, onUiActionChanged = ::mapAndToggle)
         }
     }
 

@@ -1,69 +1,28 @@
-package pl.burno.selectionlauncher.screen
+package pl.burno.selectionlauncher.screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Switch
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import kotlinx.coroutines.flow.Flow
 import pl.burno.selectionlauncher.domain.Action
-
-@Composable
-fun Home(
-    uiActionsFlow: Flow<List<UiAction>>,
-    onUiActionChanged: (UiAction, Boolean) -> Unit
-) {
-    val uiActionsState = uiActionsFlow.collectAsState(listOf())
-    val uiActions = uiActionsState.value
-    if (uiActions.isNotEmpty()) {
-        ActionList(uiActions, onUiActionChanged)
-    } else {
-        ProgressBar()
-    }
-}
-
-@Composable
-fun ProgressBar() {
-    ConstraintLayout(Modifier.fillMaxWidth().fillMaxHeight()) {
-        val progressIndicator = createRef()
-        CircularProgressIndicator(
-            Modifier.constrainAs(progressIndicator) {
-                top.linkTo(parent.top)
-                bottom.linkTo(parent.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            }
-        )
-    }
-}
+import pl.burno.selectionlauncher.screen.UiAction
 
 @Preview(showBackground = true)
 @Composable
-fun ActionList(
-    uiActions: List<UiAction> = Action.values().map {
-        UiAction.fromAction(it, false)
-    },
-    onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> }
-) {
-    LazyColumnFor(items = uiActions) { uiAction ->
-        OptionSwitch(uiAction, onChanged = { onUiActionChanged(uiAction, it) })
-    }
-}
-
-@Composable
-fun OptionSwitch(uiAction: UiAction, onChanged: (Boolean) -> Unit = {}) {
+fun OptionSwitch(
+    uiAction: UiAction = UiAction.fromAction(Action.Instagram, false),
+    onChanged: (Boolean) -> Unit = {})
+{
     Row(
         modifier = Modifier
             .fillMaxWidth()
