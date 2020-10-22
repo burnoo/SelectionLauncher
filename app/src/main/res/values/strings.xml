@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SelectionLauncher</string>
+    <string name="title_instagram">Instagram</string>
+    <string name="title_snapchat">Snapchat</string>
+</resources>
