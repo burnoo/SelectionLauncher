@@ -13,24 +13,24 @@ class ActionToggler(private val packageManager: PackageManager) {
 
     private val _state = MutableStateFlow(Action.values().map { action ->
         val componentEnabledValue = packageManager
-            .getComponentEnabledSetting(action.actionName.toComponentName())
+            .getComponentEnabledSetting(action.toComponentName())
         action to (componentEnabledValue == PackageManager.COMPONENT_ENABLED_STATE_ENABLED)
     })
     val state: StateFlow<List<Pair<Action, Boolean>>> = _state
 
-    fun toggle(name: String, isEnabled: Boolean) {
+    fun toggle(action: Action, isEnabled: Boolean) {
         packageManager.setComponentEnabledSetting(
-            name.toComponentName(),
+            action.toComponentName(),
             isEnabled.toComponentState(),
             PackageManager.DONT_KILL_APP
         )
-        _state.value = _state.value.map { (action, actionIsEnabled) ->
-            action to if (action.actionName == name) isEnabled else actionIsEnabled
+        _state.value = _state.value.map { (stateAction, stateIsEnabled) ->
+            stateAction to if (stateAction == action) isEnabled else stateIsEnabled
         }
     }
 
-    private fun String.toComponentName() =
-        ComponentName(PACKAGE_NAME, "$PACKAGE_NAME.$this")
+    private fun Action.toComponentName() =
+        ComponentName(PACKAGE_NAME, "$PACKAGE_NAME.$actionName")
 
     private fun Boolean.toComponentState(): Int {
         return if (this) {

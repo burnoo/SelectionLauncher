@@ -6,7 +6,6 @@ import androidx.compose.ui.platform.setContent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.map
 
-
 @ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             Home(
                 uiActionsFlow = actionUiItemsFlow,
                 onUiActionChanged = { actionUiItem, isEnabled ->
-                    actionStates.toggle(actionUiItem.name, isEnabled)
+                    actionStates.toggle(Action.fromName(actionUiItem.name), isEnabled)
                 }
             )
         }
