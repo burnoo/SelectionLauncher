@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.content.pm.PackageManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import pl.burno.selectionlauncher.domain.Action
 
 private const val PACKAGE_NAME = "pl.burno.selectionlauncher"
 

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SelectionLauncher">
         <activity
-            android:name=".MainActivity"
+            android:name="pl.burno.selectionlauncher.screen.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.SelectionLauncher">
             <intent-filter>
@@ -22,17 +22,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InstagramActivity"
+            android:name=".launcher.InstagramActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
-            android:name=".SnapchatActivity"
+            android:name=".launcher.SnapchatActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
 
         <activity-alias
             android:name=".Instagram"
             android:enabled="false"
             android:label="@string/title_instagram"
-            android:targetActivity=".InstagramActivity">
+            android:targetActivity=".launcher.InstagramActivity">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -43,7 +43,7 @@
             android:name=".Snapchat"
             android:enabled="false"
             android:label="@string/title_snapchat"
-            android:targetActivity=".SnapchatActivity">
+            android:targetActivity=".launcher.SnapchatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
                 <category android:name="android.intent.category.DEFAULT" />

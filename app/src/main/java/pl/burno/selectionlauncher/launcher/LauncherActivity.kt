@@ -1,10 +1,11 @@
-package pl.burno.selectionlauncher
+package pl.burno.selectionlauncher.launcher
 
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import pl.burno.selectionlauncher.R
 
 abstract class LauncherActivity : AppCompatActivity(R.layout.activity_launcher) {
     protected abstract val pkg: String
@@ -35,14 +36,3 @@ abstract class LauncherActivity : AppCompatActivity(R.layout.activity_launcher) 
     }
 }
 
-class InstagramActivity : LauncherActivity() {
-    override val pkg = "com.instagram.android"
-    override fun createUri(text: String): Uri =
-        Uri.parse("https://instagram.com/_u/$text")
-}
-
-class SnapchatActivity : LauncherActivity() {
-    override val pkg = "com.snapchat.android"
-    override fun createUri(text: String): Uri =
-        Uri.parse("https://snapchat.com/add/$text")
-}

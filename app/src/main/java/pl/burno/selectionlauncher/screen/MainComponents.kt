@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher
+package pl.burno.selectionlauncher.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
@@ -18,6 +18,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import kotlinx.coroutines.flow.Flow
+import pl.burno.selectionlauncher.domain.Action
 
 @Composable
 fun Home(

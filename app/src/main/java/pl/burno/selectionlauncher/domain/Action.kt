@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher
+package pl.burno.selectionlauncher.domain
 
 enum class Action(val actionName: String) {
     Instagram("Instagram"),

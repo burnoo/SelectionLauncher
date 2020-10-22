@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher
+package pl.burno.selectionlauncher.screen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import androidx.compose.ui.platform.setContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.koin.android.ext.android.get
+import pl.burno.selectionlauncher.domain.Action
+import pl.burno.selectionlauncher.ActionToggler
 
 class MainActivity : AppCompatActivity() {
 

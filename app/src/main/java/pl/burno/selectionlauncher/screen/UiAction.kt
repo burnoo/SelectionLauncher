@@ -1,4 +1,7 @@
-package pl.burno.selectionlauncher
+package pl.burno.selectionlauncher.screen
+
+import pl.burno.selectionlauncher.R
+import pl.burno.selectionlauncher.domain.Action
 
 data class UiAction(
     val name: String,
