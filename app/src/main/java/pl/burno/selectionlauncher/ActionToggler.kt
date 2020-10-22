@@ -2,13 +2,11 @@ package pl.burno.selectionlauncher
 
 import android.content.ComponentName
 import android.content.pm.PackageManager
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 private const val PACKAGE_NAME = "pl.burno.selectionlauncher"
 
-@ExperimentalCoroutinesApi
 class ActionToggler(private val packageManager: PackageManager) {
 
     private val _state = MutableStateFlow(Action.values().map { action ->
