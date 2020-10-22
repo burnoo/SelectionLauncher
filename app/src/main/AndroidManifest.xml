@@ -19,8 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InstagramActivity" />
-        <activity android:name=".SnapchatActivity" />
+        <activity
+            android:name=".InstagramActivity"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+        <activity
+            android:name=".SnapchatActivity"
+            android:theme="@style/Theme.AppCompat.Translucent" />
 
         <activity-alias
             android:name=".Instagram"

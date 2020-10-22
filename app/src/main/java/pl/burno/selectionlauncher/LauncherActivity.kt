@@ -6,13 +6,12 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-abstract class LauncherActivity : AppCompatActivity() {
+abstract class LauncherActivity : AppCompatActivity(R.layout.activity_launcher) {
     protected abstract val pkg: String
     protected abstract fun createUri(text: String) : Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launcher)
 
         val selection = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)!!.toString()
         finish()
