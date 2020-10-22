@@ -6,13 +6,14 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+private const val PACKAGE_NAME = "pl.burno.selectionlauncher"
+
 @ExperimentalCoroutinesApi
 class ActionToggler(private val packageManager: PackageManager) {
 
     private val _state = MutableStateFlow(supportedActions.map { name ->
-        val componentEnabledValue = packageManager.getComponentEnabledSetting(
-            name.toComponentName()
-        )
+        val componentEnabledValue = packageManager
+            .getComponentEnabledSetting(name.toComponentName())
         name to (componentEnabledValue == PackageManager.COMPONENT_ENABLED_STATE_ENABLED)
     })
     val state: StateFlow<List<Pair<String, Boolean>>> = _state

@@ -6,7 +6,6 @@ import androidx.compose.ui.platform.setContent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.map
 
-const val PACKAGE_NAME = "pl.burno.selectionlauncher"
 
 @ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
