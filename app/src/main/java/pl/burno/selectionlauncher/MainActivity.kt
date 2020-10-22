@@ -14,12 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val actionStates = ActionToggler(packageManager)
         val actionUiItemsFlow = actionStates.state.map { list ->
-            list.map { (name, isEnabled) -> ActionUiItem.fromName(name, isEnabled) }
+            list.map { (action, isEnabled) -> UiAction.fromAction(action, isEnabled) }
         }
         setContent {
             Home(
-                actionUiItemsFlow = actionUiItemsFlow,
-                onActionUiItemChanged = { actionUiItem, isEnabled ->
+                uiActionsFlow = actionUiItemsFlow,
+                onUiActionChanged = { actionUiItem, isEnabled ->
                     actionStates.toggle(actionUiItem.name, isEnabled)
                 }
             )

@@ -11,12 +11,12 @@ private const val PACKAGE_NAME = "pl.burno.selectionlauncher"
 @ExperimentalCoroutinesApi
 class ActionToggler(private val packageManager: PackageManager) {
 
-    private val _state = MutableStateFlow(supportedActions.map { name ->
+    private val _state = MutableStateFlow(Action.values().map { action ->
         val componentEnabledValue = packageManager
-            .getComponentEnabledSetting(name.toComponentName())
-        name to (componentEnabledValue == PackageManager.COMPONENT_ENABLED_STATE_ENABLED)
+            .getComponentEnabledSetting(action.actionName.toComponentName())
+        action to (componentEnabledValue == PackageManager.COMPONENT_ENABLED_STATE_ENABLED)
     })
-    val state: StateFlow<List<Pair<String, Boolean>>> = _state
+    val state: StateFlow<List<Pair<Action, Boolean>>> = _state
 
     fun toggle(name: String, isEnabled: Boolean) {
         packageManager.setComponentEnabledSetting(
@@ -24,8 +24,8 @@ class ActionToggler(private val packageManager: PackageManager) {
             isEnabled.toComponentState(),
             PackageManager.DONT_KILL_APP
         )
-        _state.value = _state.value.map { (actionName, actionIsEnabled) ->
-            actionName to if (actionName == name) isEnabled else actionIsEnabled
+        _state.value = _state.value.map { (action, actionIsEnabled) ->
+            action to if (action.actionName == name) isEnabled else actionIsEnabled
         }
     }
 

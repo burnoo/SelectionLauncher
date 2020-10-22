@@ -1,3 +1,6 @@
 package pl.burno.selectionlauncher
 
-val supportedActions = listOf("Instagram", "Snapchat")
+enum class Action(val actionName: String) {
+    Instagram("Instagram"),
+    Snapchat("Snapchat"),
+}

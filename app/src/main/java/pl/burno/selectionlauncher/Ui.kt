@@ -21,13 +21,13 @@ import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun Home(
-    actionUiItemsFlow: Flow<List<ActionUiItem>>,
-    onActionUiItemChanged: (ActionUiItem, Boolean) -> Unit
+    uiActionsFlow: Flow<List<UiAction>>,
+    onUiActionChanged: (UiAction, Boolean) -> Unit
 ) {
-    val actionUiItemsState = actionUiItemsFlow.collectAsState(listOf())
-    val actionUiItems = actionUiItemsState.value
-    if (actionUiItems.isNotEmpty()) {
-        ActionList(actionUiItems, onActionUiItemChanged)
+    val uiActionsState = uiActionsFlow.collectAsState(listOf())
+    val uiActions = uiActionsState.value
+    if (uiActions.isNotEmpty()) {
+        ActionList(uiActions, onUiActionChanged)
     } else {
         ProgressBar()
     }
@@ -51,20 +51,22 @@ fun ProgressBar() {
 @Preview(showBackground = true)
 @Composable
 fun ActionList(
-    actionUiItems: List<ActionUiItem> = supportedActions.map { ActionUiItem.fromName(it, false) },
-    onActionUiItemChanged: (ActionUiItem, Boolean) -> Unit = { _, _ -> }
+    uiActions: List<UiAction> = Action.values().map {
+        UiAction.fromAction(it, false)
+    },
+    onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> }
 ) {
-    LazyColumnFor(items = actionUiItems) { actionUiItem ->
-        OptionSwitch(actionUiItem, onChanged = { onActionUiItemChanged(actionUiItem, it) })
+    LazyColumnFor(items = uiActions) { uiAction ->
+        OptionSwitch(uiAction, onChanged = { onUiActionChanged(uiAction, it) })
     }
 }
 
 @Composable
-fun OptionSwitch(actionUiItem: ActionUiItem, onChanged: (Boolean) -> Unit = {}) {
+fun OptionSwitch(uiAction: UiAction, onChanged: (Boolean) -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = { onChanged(!actionUiItem.isEnabled) })
+            .clickable(onClick = { onChanged(!uiAction.isEnabled) })
             .padding(4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -72,18 +74,18 @@ fun OptionSwitch(actionUiItem: ActionUiItem, onChanged: (Boolean) -> Unit = {}) 
             modifier = Modifier
                 .padding(8.dp)
                 .clip(RoundedCornerShape(5.dp)),
-            asset = vectorResource(id = actionUiItem.iconResId),
+            asset = vectorResource(id = uiAction.iconResId),
         )
         Text(
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 8.dp),
             style = MaterialTheme.typography.body1,
-            text = actionUiItem.name
+            text = uiAction.name
         )
         Switch(
             modifier = Modifier.padding(end = 12.dp),
-            checked = actionUiItem.isEnabled,
+            checked = uiAction.isEnabled,
             onCheckedChange = onChanged
         )
     }
