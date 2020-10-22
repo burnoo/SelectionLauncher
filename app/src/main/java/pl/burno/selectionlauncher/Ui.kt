@@ -51,7 +51,7 @@ fun ProgressBar() {
 @Preview(showBackground = true)
 @Composable
 fun ActionList(
-    actionUiItems: List<ActionUiItem> = defaultActionUiItems,
+    actionUiItems: List<ActionUiItem> = supportedActions.map { ActionUiItem.fromName(it, false) },
     onActionUiItemChanged: (ActionUiItem, Boolean) -> Unit = { _, _ -> }
 ) {
     LazyColumnFor(items = actionUiItems) { actionUiItem ->

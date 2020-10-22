@@ -9,8 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 @ExperimentalCoroutinesApi
 class ActionToggler(private val packageManager: PackageManager) {
 
-    private val names = listOf("Instagram", "Snapchat")
-    private val _state = MutableStateFlow(names.map { name ->
+    private val _state = MutableStateFlow(supportedActions.map { name ->
         val componentEnabledValue = packageManager.getComponentEnabledSetting(
             name.toComponentName()
         )
