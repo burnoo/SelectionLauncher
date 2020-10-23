@@ -6,7 +6,7 @@ import pl.burno.selectionlauncher.domain.Action
 data class UiAction(
     val name: String,
     val iconResId: Int,
-    val isEnabled: Boolean
+    val isEnabled: Boolean,
 ) {
 
     companion object {
