@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
@@ -31,31 +33,27 @@ fun MainLayout(
     },
     onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> }
 ) {
+    val decoy = remember { mutableStateOf(1) }
     ConstraintLayout(Modifier.fillMaxWidth().fillMaxHeight()) {
         val (actionList, testText) = createRefs()
         Actions(
             uiActions = uiActions,
-            onUiActionChanged = onUiActionChanged,
+            onUiActionChanged = { uiAction, isEnabled ->
+                decoy.value++
+                onUiActionChanged(uiAction, isEnabled)
+            },
             modifier = Modifier.constrainAs(actionList) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
             }
         )
-        Test(Modifier.constrainAs(testText) {
+        Test(decoy.value, Modifier.constrainAs(testText) {
             val sideMargin = 16.dp
             top.linkTo(actionList.bottom)
             bottom.linkTo(parent.bottom)
             start.linkTo(parent.start, margin = sideMargin)
             end.linkTo(parent.end, margin = sideMargin)
         })
-//        CircularProgressIndicator(
-//            Modifier.constrainAs(progressIndicator) {
-//                top.linkTo(parent.top)
-//                bottom.linkTo(parent.bottom)
-//                start.linkTo(parent.start)
-//                end.linkTo(parent.end)
-//            }
-//        )
     }
 }
