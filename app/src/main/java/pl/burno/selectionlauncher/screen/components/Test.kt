@@ -10,9 +10,9 @@ import pl.burno.selectionlauncher.R
 
 @Preview(showBackground = true)
 @Composable
-fun Test() {
+fun Test(modifier: Modifier = Modifier) {
     AndroidView(
         viewBlock = { LayoutInflater.from(it).inflate(R.layout.layout_test, null) },
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     )
 }

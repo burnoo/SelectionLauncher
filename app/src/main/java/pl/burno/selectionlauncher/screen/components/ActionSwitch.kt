@@ -19,7 +19,7 @@ import pl.burno.selectionlauncher.screen.UiAction
 
 @Preview(showBackground = true)
 @Composable
-fun OptionSwitch(
+fun ActionSwitch(
     uiAction: UiAction = UiAction.fromAction(Action.Instagram, false),
     onChanged: (Boolean) -> Unit = {})
 {

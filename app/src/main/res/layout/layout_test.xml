@@ -7,5 +7,8 @@
     android:gravity="center_horizontal"
     android:text="@string/test_description"
     android:textColor="@color/black"
+    android:lineSpacingExtra="10dp"
     android:textIsSelectable="true"
-    android:textSize="24sp" />
+    android:textSize="24sp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:text="Try selecting here, my ig/sc:\nlibrunos"/>

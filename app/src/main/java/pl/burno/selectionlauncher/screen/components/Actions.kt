@@ -2,6 +2,7 @@ package pl.burno.selectionlauncher.screen.components
 
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.ui.tooling.preview.Preview
 import pl.burno.selectionlauncher.domain.Action
 import pl.burno.selectionlauncher.screen.UiAction
@@ -12,9 +13,10 @@ fun Actions(
     uiActions: List<UiAction> = Action.values().map {
         UiAction.fromAction(it, false)
     },
-    onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> }
+    onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> },
+    modifier: Modifier = Modifier
 ) {
-    LazyColumnFor(items = uiActions) { uiAction ->
-        OptionSwitch(uiAction, onChanged = { onUiActionChanged(uiAction, it) })
+    LazyColumnFor(items = uiActions, modifier = modifier) { uiAction ->
+        ActionSwitch(uiAction, onChanged = { onUiActionChanged(uiAction, it) })
     }
 }
