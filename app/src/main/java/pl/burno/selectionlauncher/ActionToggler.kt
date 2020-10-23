@@ -13,7 +13,7 @@ class ActionToggler(private val packageManager: PackageManager) {
     private val _state = MutableStateFlow(Action.values().map { action ->
         val componentEnabledValue = packageManager
             .getComponentEnabledSetting(action.toComponentName())
-        action to (componentEnabledValue == PackageManager.COMPONENT_ENABLED_STATE_ENABLED)
+        action to (componentEnabledValue != PackageManager.COMPONENT_ENABLED_STATE_DISABLED)
     })
     val state: StateFlow<List<Pair<Action, Boolean>>> = _state
 
