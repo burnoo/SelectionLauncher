@@ -49,11 +49,10 @@ fun MainLayout(
             }
         )
         Test(decoy.value, Modifier.constrainAs(testText) {
-            val sideMargin = 16.dp
             top.linkTo(actionList.bottom)
             bottom.linkTo(parent.bottom)
-            start.linkTo(parent.start, margin = sideMargin)
-            end.linkTo(parent.end, margin = sideMargin)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
         })
     }
 }

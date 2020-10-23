@@ -16,7 +16,7 @@ fun Test(decoy: Int = 1, modifier: Modifier = Modifier) {
         viewBlock = {
             LayoutInflater.from(it).inflate(R.layout.layout_test, null) as TextView
         },
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
         update = {
             // WORKAROUND: this forces clearing focus to execute on each action toggle
             decoy.toString()
