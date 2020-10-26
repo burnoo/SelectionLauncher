@@ -1,9 +1,9 @@
 package pl.burno.selectionlauncher.launcher
 
-import android.net.Uri
+class SnapchatActivity : ActionLauncherActivity() {
 
-class SnapchatActivity : LauncherActivity() {
-    override val pkg = "com.snapchat.android"
-    override fun createUri(text: String): Uri =
-        Uri.parse("https://snapchat.com/add/$text")
+    override fun launchAction(selection: String) = launchActionView(
+        pkg = "com.snapchat.android",
+        url = "https://snapchat.com/add/$selection"
+    )
 }
