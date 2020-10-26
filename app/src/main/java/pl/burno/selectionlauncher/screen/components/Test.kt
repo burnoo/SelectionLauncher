@@ -18,7 +18,7 @@ fun Test(decoy: Int = 1, modifier: Modifier = Modifier) {
         },
         modifier = modifier,
         update = {
-            // WORKAROUND: this forces clearing focus to execute on each action toggle
+            // WORKAROUND: this forces clearing focus execution on each action toggle
             decoy.toString()
             it.clearFocus()
         }
