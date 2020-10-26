@@ -7,5 +7,5 @@ import pl.burno.selectionlauncher.ActionToggler
 
 val appModule = module {
     factory<PackageManager> { androidContext().packageManager }
-    factory { ActionToggler(get()) }
+    single { ActionToggler(get()) }
 }
