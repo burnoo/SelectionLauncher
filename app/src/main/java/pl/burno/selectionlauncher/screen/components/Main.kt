@@ -8,7 +8,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import kotlinx.coroutines.flow.Flow
 import pl.burno.selectionlauncher.domain.Action
@@ -33,13 +32,13 @@ fun MainLayout(
     },
     onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> }
 ) {
-    val decoy = remember { mutableStateOf(1) }
+    val selectionTestTrigger = remember { mutableStateOf(1) }
     ConstraintLayout(Modifier.fillMaxWidth().fillMaxHeight()) {
-        val (actionList, testText) = createRefs()
+        val (actionList, selectionTestText) = createRefs()
         Actions(
             uiActions = uiActions,
             onUiActionChanged = { uiAction, isEnabled ->
-                decoy.value++
+                selectionTestTrigger.value++
                 onUiActionChanged(uiAction, isEnabled)
             },
             modifier = Modifier.constrainAs(actionList) {
@@ -48,11 +47,14 @@ fun MainLayout(
                 end.linkTo(parent.end)
             }
         )
-        Test(decoy.value, Modifier.constrainAs(testText) {
-            top.linkTo(actionList.bottom)
-            bottom.linkTo(parent.bottom)
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-        })
+        SelectionTest(
+            updateTrigger = selectionTestTrigger.value,
+            modifier = Modifier.constrainAs(selectionTestText) {
+                top.linkTo(actionList.bottom)
+                bottom.linkTo(parent.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            }
+        )
     }
 }

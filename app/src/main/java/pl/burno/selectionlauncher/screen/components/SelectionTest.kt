@@ -2,7 +2,6 @@ package pl.burno.selectionlauncher.screen.components
 
 import android.view.LayoutInflater
 import android.widget.TextView
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
@@ -11,7 +10,7 @@ import pl.burno.selectionlauncher.R
 
 @Preview(showBackground = true)
 @Composable
-fun Test(decoy: Int = 1, modifier: Modifier = Modifier) {
+fun SelectionTest(updateTrigger: Int = 1, modifier: Modifier = Modifier) {
     AndroidView(
         viewBlock = {
             LayoutInflater.from(it).inflate(R.layout.layout_test, null) as TextView
@@ -19,7 +18,7 @@ fun Test(decoy: Int = 1, modifier: Modifier = Modifier) {
         modifier = modifier,
         update = {
             // WORKAROUND: this forces clearing focus execution on each action toggle
-            decoy.toString()
+            updateTrigger.toString()
             it.clearFocus()
         }
     )
