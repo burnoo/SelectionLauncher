@@ -51,7 +51,7 @@ dependencies {
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.ui:ui-tooling:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'org.koin:koin-androidx-viewmodel:2.1.6'
 
     testImplementation 'junit:junit:4.13.1'
