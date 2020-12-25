@@ -27,9 +27,17 @@ abstract class ActionLauncherActivity : AppCompatActivity(R.layout.activity_laun
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val selection = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)!!.toString()
+        val text = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)!!.toString()
         finish()
-        launchSelection(selection = selection)
+        launchSelection(selection = extractSelection(text))
+    }
+
+    private fun extractSelection(text: String): String {
+        return text.run {
+            val i = indexOf(":") + 1
+            val selection = if (i < length) substring(i) else this
+            selection.trim()
+        }
     }
 
     abstract fun launchSelection(selection: String)
