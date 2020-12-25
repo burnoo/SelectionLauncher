@@ -7,11 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import pl.burno.selectionlauncher.domain.Action
-import pl.burno.selectionlauncher.ui.model.UiAction
 import pl.burno.selectionlauncher.ui.components.main.action.Actions
 import pl.burno.selectionlauncher.ui.components.main.test.SelectionTest
+import pl.burno.selectionlauncher.ui.model.UiAction
 
 @Preview(showBackground = true)
 @Composable
@@ -25,25 +25,25 @@ fun ActionsWithTest(
     ConstraintLayout(Modifier.fillMaxWidth().fillMaxHeight()) {
         val (actionList, selectionTestText) = createRefs()
         Actions(
-            uiActions = uiActions,
-            onUiActionChanged = { uiAction, isEnabled ->
-                selectionTestTrigger.value++
-                onUiActionChanged(uiAction, isEnabled)
-            },
             modifier = Modifier.constrainAs(actionList) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            }
+            },
+            onUiActionChanged = { uiAction, isEnabled ->
+                selectionTestTrigger.value++
+                onUiActionChanged(uiAction, isEnabled)
+            },
+            uiActions = uiActions
         )
         SelectionTest(
-            updateTrigger = selectionTestTrigger.value,
             modifier = Modifier.constrainAs(selectionTestText) {
                 top.linkTo(actionList.bottom)
                 bottom.linkTo(parent.bottom)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            }
+            },
+            updateTrigger = selectionTestTrigger.value
         )
     }
 }

@@ -2,19 +2,20 @@ package pl.burno.selectionlauncher.ui.components.main.action
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Switch
-import androidx.compose.material.SwitchConstants
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import pl.burno.selectionlauncher.domain.Action
 import pl.burno.selectionlauncher.ui.model.UiAction
 
@@ -22,8 +23,8 @@ import pl.burno.selectionlauncher.ui.model.UiAction
 @Composable
 fun ActionSwitch(
     uiAction: UiAction = UiAction.fromAction(Action.Instagram, true),
-    onChanged: (Boolean) -> Unit = {})
-{
+    onChanged: (Boolean) -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -35,7 +36,7 @@ fun ActionSwitch(
             modifier = Modifier
                 .padding(8.dp)
                 .clip(RoundedCornerShape(5.dp)),
-            asset = vectorResource(id = uiAction.iconResId),
+            imageVector = vectorResource(id = uiAction.iconResId),
         )
         BasicText(
             modifier = Modifier

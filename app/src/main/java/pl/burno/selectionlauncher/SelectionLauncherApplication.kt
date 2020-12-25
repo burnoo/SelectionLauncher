@@ -5,6 +5,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import pl.burno.selectionlauncher.di.appModule
 
+@Suppress("unused") // used in AndroidManifest.xml
 class SelectionLauncherApplication : Application() {
     override fun onCreate() {
         super.onCreate()

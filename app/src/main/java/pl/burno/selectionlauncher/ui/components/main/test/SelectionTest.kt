@@ -5,12 +5,12 @@ import android.widget.TextView
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import pl.burno.selectionlauncher.R
 
 @Preview(showBackground = true)
 @Composable
-fun SelectionTest(updateTrigger: Int = 1, modifier: Modifier = Modifier) {
+fun SelectionTest(modifier: Modifier = Modifier, updateTrigger: Int = 1) {
     AndroidView(
         viewBlock = {
             LayoutInflater.from(it).inflate(R.layout.layout_test, null) as TextView

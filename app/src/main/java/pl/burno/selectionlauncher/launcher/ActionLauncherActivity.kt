@@ -3,9 +3,8 @@ package pl.burno.selectionlauncher.launcher
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import pl.burno.selectionlauncher.R
 
