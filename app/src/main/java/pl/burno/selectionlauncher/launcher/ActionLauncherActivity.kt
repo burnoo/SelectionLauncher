@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import pl.burno.selectionlauncher.R
 
-fun Activity.launchActionView(pkg: String, url: String) {
+fun Activity.launchAction(pkg: String, url: String) {
     val uri = url.toUri()
     val intent = Intent(Intent.ACTION_VIEW, uri)
     intent.setPackage(pkg)
@@ -29,9 +29,9 @@ abstract class ActionLauncherActivity : AppCompatActivity(R.layout.activity_laun
 
         val selection = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)!!.toString()
         finish()
-        launchAction(selection = selection)
+        launchSelection(selection = selection)
     }
 
-    abstract fun launchAction(selection: String)
+    abstract fun launchSelection(selection: String)
 }
 
