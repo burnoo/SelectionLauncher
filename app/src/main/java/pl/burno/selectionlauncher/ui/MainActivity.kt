@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher.screen
+package pl.burno.selectionlauncher.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,11 @@ import androidx.compose.ui.platform.setContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.koin.android.ext.android.get
-import pl.burno.selectionlauncher.domain.Action
 import pl.burno.selectionlauncher.ActionToggler
-import pl.burno.selectionlauncher.screen.components.Main
+import pl.burno.selectionlauncher.domain.Action
+import pl.burno.selectionlauncher.ui.components.main.MainScaffold
+import pl.burno.selectionlauncher.ui.model.UiAction
+import pl.burno.selectionlauncher.ui.theme.SelectionLauncherTheme
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val uiActionsFlow = actionToggler.state.toUiActionsFlow()
         setContent {
-            Main(uiActionsFlow = uiActionsFlow, onUiActionChanged = ::mapAndToggle)
+            SelectionLauncherTheme {
+                MainScaffold(uiActionsFlow = uiActionsFlow, onUiActionChanged = ::mapAndToggle)
+            }
         }
     }
 

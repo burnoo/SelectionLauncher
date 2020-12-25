@@ -1,12 +1,13 @@
-package pl.burno.selectionlauncher.screen.components
+package pl.burno.selectionlauncher.ui.components.main.action
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Switch
+import androidx.compose.material.SwitchConstants
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,12 +16,12 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import pl.burno.selectionlauncher.domain.Action
-import pl.burno.selectionlauncher.screen.UiAction
+import pl.burno.selectionlauncher.ui.model.UiAction
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0xFFFFFF)
 @Composable
 fun ActionSwitch(
-    uiAction: UiAction = UiAction.fromAction(Action.Instagram, false),
+    uiAction: UiAction = UiAction.fromAction(Action.Instagram, true),
     onChanged: (Boolean) -> Unit = {})
 {
     Row(
@@ -36,7 +37,7 @@ fun ActionSwitch(
                 .clip(RoundedCornerShape(5.dp)),
             asset = vectorResource(id = uiAction.iconResId),
         )
-        Text(
+        BasicText(
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 8.dp),

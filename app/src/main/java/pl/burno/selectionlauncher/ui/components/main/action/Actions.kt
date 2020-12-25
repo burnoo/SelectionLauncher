@@ -1,11 +1,11 @@
-package pl.burno.selectionlauncher.screen.components
+package pl.burno.selectionlauncher.ui.components.main.action
 
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.ui.tooling.preview.Preview
 import pl.burno.selectionlauncher.domain.Action
-import pl.burno.selectionlauncher.screen.UiAction
+import pl.burno.selectionlauncher.ui.model.UiAction
 
 @Preview(showBackground = true)
 @Composable

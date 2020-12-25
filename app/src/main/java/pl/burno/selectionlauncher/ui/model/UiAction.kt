@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher.screen
+package pl.burno.selectionlauncher.ui.model
 
 import pl.burno.selectionlauncher.R
 import pl.burno.selectionlauncher.domain.Action

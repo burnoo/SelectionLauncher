@@ -10,11 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SelectionLauncher">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name="pl.burno.selectionlauncher.screen.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.SelectionLauncher">
+            android:name="pl.burno.selectionlauncher.ui.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

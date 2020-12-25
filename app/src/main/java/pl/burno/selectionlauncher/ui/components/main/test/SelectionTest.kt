@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher.screen.components
+package pl.burno.selectionlauncher.ui.components.main.test
 
 import android.view.LayoutInflater
 import android.widget.TextView

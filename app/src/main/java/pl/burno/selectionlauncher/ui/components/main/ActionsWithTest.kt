@@ -1,32 +1,21 @@
-package pl.burno.selectionlauncher.screen.components
+package pl.burno.selectionlauncher.ui.components.main
 
 import androidx.compose.foundation.layout.ConstraintLayout
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.ui.tooling.preview.Preview
-import kotlinx.coroutines.flow.Flow
 import pl.burno.selectionlauncher.domain.Action
-import pl.burno.selectionlauncher.screen.UiAction
-
-@Composable
-fun Main(uiActionsFlow: Flow<List<UiAction>>, onUiActionChanged: (UiAction, Boolean) -> Unit) {
-    val uiActionsState = uiActionsFlow.collectAsState(listOf())
-    val uiActions = uiActionsState.value
-    if (uiActions.isNotEmpty()) {
-        MainLayout(uiActions, onUiActionChanged)
-    } else {
-        FullScreenProgressBar()
-    }
-}
+import pl.burno.selectionlauncher.ui.model.UiAction
+import pl.burno.selectionlauncher.ui.components.main.action.Actions
+import pl.burno.selectionlauncher.ui.components.main.test.SelectionTest
 
 @Preview(showBackground = true)
 @Composable
-fun MainLayout(
+fun ActionsWithTest(
     uiActions: List<UiAction> = Action.values().map {
         UiAction.fromAction(it, false)
     },

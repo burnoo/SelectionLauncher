@@ -1,4 +1,4 @@
-package pl.burno.selectionlauncher.screen.components
+package pl.burno.selectionlauncher.ui.components.main.progress
 
 import androidx.compose.foundation.layout.ConstraintLayout
 import androidx.compose.foundation.layout.fillMaxHeight
