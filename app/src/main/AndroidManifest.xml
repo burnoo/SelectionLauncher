@@ -51,4 +51,12 @@
         </activity-alias>
     </application>
 
+    <queries>
+        <package android:name="com.instagram.android" />
+        <package android:name="com.snapchat.android" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+        </intent>
+    </queries>
+
 </manifest>
