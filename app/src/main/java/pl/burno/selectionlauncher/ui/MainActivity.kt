@@ -15,10 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SelectionLauncherTheme {
-                MainScaffold(
-                    uiActionsFlow = viewModel.uiActionsFlow,
-                    onUiActionChanged = viewModel::onUiActionChanged
-                )
+                MainScaffold(viewModel)
             }
         }
     }

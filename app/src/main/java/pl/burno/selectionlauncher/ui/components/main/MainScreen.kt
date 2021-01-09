@@ -3,30 +3,23 @@ package pl.burno.selectionlauncher.ui.components.main
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import kotlinx.coroutines.flow.Flow
+import pl.burno.selectionlauncher.ui.MainViewModel
 import pl.burno.selectionlauncher.ui.components.AppBar
 import pl.burno.selectionlauncher.ui.components.main.progress.FullScreenProgressBar
-import pl.burno.selectionlauncher.ui.model.UiAction
 
 @Composable
-fun MainScaffold(
-    uiActionsFlow: Flow<List<UiAction>>,
-    onUiActionChanged: (UiAction, Boolean) -> Unit
-) {
+fun MainScaffold(viewModel: MainViewModel) {
     Scaffold(topBar = { AppBar() }, bodyContent = {
-        MainScreen(uiActionsFlow = uiActionsFlow, onUiActionChanged = onUiActionChanged)
+        MainScreen(viewModel)
     })
 }
 
 @Composable
-fun MainScreen(
-    uiActionsFlow: Flow<List<UiAction>>,
-    onUiActionChanged: (UiAction, Boolean) -> Unit
-) {
-    val uiActionsState = uiActionsFlow.collectAsState(listOf())
+fun MainScreen(viewModel: MainViewModel) {
+    val uiActionsState = viewModel.uiActionsFlow.collectAsState(listOf())
     val uiActions = uiActionsState.value
     if (uiActions.isNotEmpty()) {
-        ActionsWithTest(uiActions, onUiActionChanged)
+        ActionsWithTest(uiActions, viewModel::onUiActionChanged)
     } else {
         FullScreenProgressBar()
     }
