@@ -18,11 +18,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.burno.selectionlauncher.domain.Action
 import pl.burno.selectionlauncher.ui.model.UiAction
+import pl.burno.selectionlauncher.ui.model.toUiAction
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFF)
 @Composable
 fun ActionSwitch(
-    uiAction: UiAction = UiAction.fromAction(Action.Instagram, true),
+    uiAction: UiAction = Action.Instagram.toEnabledAction(true).toUiAction(),
     onChanged: (Boolean) -> Unit = {}
 ) {
     Row(

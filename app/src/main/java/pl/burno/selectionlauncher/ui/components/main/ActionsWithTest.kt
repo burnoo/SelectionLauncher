@@ -8,17 +8,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import pl.burno.selectionlauncher.domain.Action
 import pl.burno.selectionlauncher.ui.components.main.action.Actions
 import pl.burno.selectionlauncher.ui.components.main.test.SelectionTest
 import pl.burno.selectionlauncher.ui.model.UiAction
+import pl.burno.selectionlauncher.ui.model.defaultUiActions
 
 @Preview(showBackground = true)
 @Composable
 fun ActionsWithTest(
-    uiActions: List<UiAction> = Action.values().map {
-        UiAction.fromAction(it, false)
-    },
+    uiActions: List<UiAction> = defaultUiActions,
     onUiActionChanged: (UiAction, Boolean) -> Unit = { _, _ -> }
 ) {
     val selectionTestTrigger = remember { mutableStateOf(1) }
