@@ -27,19 +27,19 @@ abstract class ActionLauncherActivity : AppCompatActivity(R.layout.activity_laun
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val text = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)!!.toString()
+        val selection = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)!!.toString()
         finish()
-        launchSelection(selection = extractSelection(text))
+        val text = extractText(selection) ?: return
+        launch(text)
     }
 
-    private fun extractSelection(text: String): String {
-        return text.run {
-            val i = indexOf(":") + 1
-            val selection = if (i < length) substring(i) else this
-            selection.trim()
-        }
+    private fun extractText(selection: String): String? {
+        return Regex("[a-z0-9._]{1,30}", RegexOption.IGNORE_CASE)
+            .findAll(selection)
+            .lastOrNull()
+            ?.value
     }
 
-    abstract fun launchSelection(selection: String)
+    abstract fun launch(text: String)
 }
 
