@@ -21,17 +21,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".launcher.InstagramActivity"
+            android:name=".launcher.social.InstagramActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
-            android:name=".launcher.SnapchatActivity"
+            android:name=".launcher.social.SnapchatActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
 
         <activity-alias
             android:name=".Instagram"
             android:enabled="true"
             android:label="@string/title_instagram"
-            android:targetActivity=".launcher.InstagramActivity">
+            android:targetActivity=".launcher.social.InstagramActivity">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -42,7 +42,7 @@
             android:name=".Snapchat"
             android:enabled="true"
             android:label="@string/title_snapchat"
-            android:targetActivity=".launcher.SnapchatActivity">
+            android:targetActivity=".launcher.social.SnapchatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
                 <category android:name="android.intent.category.DEFAULT" />

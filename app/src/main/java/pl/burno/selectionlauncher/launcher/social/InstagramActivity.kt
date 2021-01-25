@@ -1,4 +1,7 @@
-package pl.burno.selectionlauncher.launcher
+package pl.burno.selectionlauncher.launcher.social
+
+import pl.burno.selectionlauncher.launcher.ActionLauncherActivity
+import pl.burno.selectionlauncher.launcher.launchAction
 
 class InstagramActivity : ActionLauncherActivity() {
 
