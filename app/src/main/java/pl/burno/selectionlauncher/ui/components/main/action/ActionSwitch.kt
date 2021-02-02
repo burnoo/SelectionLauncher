@@ -34,10 +34,11 @@ fun ActionSwitch(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
+            imageVector = vectorResource(id = uiAction.iconResId),
             modifier = Modifier
                 .padding(8.dp)
                 .clip(RoundedCornerShape(5.dp)),
-            imageVector = vectorResource(id = uiAction.iconResId),
+            contentDescription = "Icon of ${uiAction.name}"
         )
         BasicText(
             modifier = Modifier
