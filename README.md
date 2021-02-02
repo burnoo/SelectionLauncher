@@ -6,7 +6,7 @@ The main reason why this application was created was because I was annoyed that 
 This is how it works:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/17478192/106633052-b280c400-657e-11eb-8aff-2dd6dc6ac666.png" width="650"/>
+<img src="https://user-images.githubusercontent.com/17478192/106633052-b280c400-657e-11eb-8aff-2dd6dc6ac666.png" width="700"/>
 </p>
 
 ## Supported apps
