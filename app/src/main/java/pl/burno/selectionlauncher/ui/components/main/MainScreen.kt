@@ -10,7 +10,7 @@ import pl.burno.selectionlauncher.ui.components.main.progress.FullScreenProgress
 
 @Composable
 fun MainScaffold() {
-    Scaffold(topBar = { AppBar() }, bodyContent = {
+    Scaffold(topBar = { AppBar() }, content = {
         MainScreen()
     })
 }

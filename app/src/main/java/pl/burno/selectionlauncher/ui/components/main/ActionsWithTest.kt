@@ -1,6 +1,5 @@
 package pl.burno.selectionlauncher.ui.components.main
 
-import androidx.compose.foundation.layout.ConstraintLayout
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
@@ -8,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.constraintlayout.compose.ConstraintLayout
 import pl.burno.selectionlauncher.ui.components.main.action.Actions
 import pl.burno.selectionlauncher.ui.components.main.test.SelectionTest
 import pl.burno.selectionlauncher.ui.model.UiAction

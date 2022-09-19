@@ -1,8 +1,8 @@
 package pl.burno.selectionlauncher.ui
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.platform.setContent
 import pl.burno.selectionlauncher.ui.components.main.MainScaffold
 import pl.burno.selectionlauncher.ui.theme.SelectionLauncherTheme
 

@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.burno.selectionlauncher.domain.Action
@@ -24,7 +24,7 @@ import pl.burno.selectionlauncher.ui.model.toUiAction
 @Composable
 fun ActionSwitch(
     uiAction: UiAction = Action.Instagram.toEnabledAction(true).toUiAction(),
-    onChanged: (Boolean) -> Unit = {}
+    onChanged: (Boolean) -> Unit = {},
 ) {
     Row(
         modifier = Modifier
@@ -34,7 +34,7 @@ fun ActionSwitch(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            imageVector = vectorResource(id = uiAction.iconResId),
+            painter = painterResource(id = uiAction.iconResId),
             modifier = Modifier
                 .padding(8.dp)
                 .clip(RoundedCornerShape(5.dp)),

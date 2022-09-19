@@ -12,7 +12,7 @@ import pl.burno.selectionlauncher.R
 @Composable
 fun SelectionTest(modifier: Modifier = Modifier, updateTrigger: Int = 1) {
     AndroidView(
-        viewBlock = {
+        factory = {
             LayoutInflater.from(it).inflate(R.layout.layout_test, null) as TextView
         },
         modifier = modifier,
